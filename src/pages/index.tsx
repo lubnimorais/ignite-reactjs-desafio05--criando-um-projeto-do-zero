@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react/button-has-type */
 import { GetStaticProps } from 'next';
-import { ReactElement, useState } from 'react';
+import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import ptBR from 'date-fns/locale/pt-BR';
 import { format } from 'date-fns';
@@ -34,16 +34,23 @@ interface HomeProps {
   postsPagination: PostPagination;
 }
 
-export default function Home({ postsPagination }: HomeProps): ReactElement {
+export default function Home({ postsPagination }: HomeProps) {
   const [posts, setPosts] = useState<Post[]>(postsPagination.results);
   const [nextPage, setNextPage] = useState(postsPagination.next_page);
 
-  async function loadNextPage(url: string) {
+  // async function loadNextPage(url: string) {
+  //   const data = await fetch(url).then(response => response.json());
+  //   setNextPage(data.next_page);
+
+  //   setPosts(state => [...state, ...data.results]);
+  // }
+
+  const loadNextPage = useCallback(async (url: string) => {
     const data = await fetch(url).then(response => response.json());
     setNextPage(data.next_page);
 
     setPosts(state => [...state, ...data.results]);
-  }
+  }, [])
 
   return (
     <div className={commonStyles.container}>
