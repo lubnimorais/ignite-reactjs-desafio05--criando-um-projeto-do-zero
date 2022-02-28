@@ -1,56 +1,40 @@
-.posts {
-  margin-top: 2rem;
-
-  > a {
-    display: block;
-  }
-
-  a + a {
-    margin-top: 3rem;
-  }
-}
-
 .post {
+  max-width: 720px;
+  margin: 2.5rem auto 0;
+
   strong {
-    font-size: 1.75rem;
-    font-weight: bold;
-    color: var(--heading);
+    display: block;
+    font-size: 2rem;
+    font-weight: 600;
   }
 
   p {
-    margin-top: 0.5rem;
-
-    font-size: 1.125rem;
+    color: var(--gray-500);
   }
 
-  ul {
-    list-style: none;
-
-    margin-top: 1.5rem;
-
+  span {
     display: flex;
+    gap: 8px;
+    color: var(--gray-500);
+  }
 
-    & li {
-      font-size: 0.875rem;
+  .info {
+    display: flex;
+    gap: 2.5rem;
+  }
 
-      & svg {
-        margin-right: 0.5rem;
-      }
-
-      & + li {
-        margin-left: 1.625rem;
-      }
-    }
+  strong,
+  p,
+  .info {
+    padding: 0.5rem 0;
   }
 }
 
-.button_posts {
+.loadMore {
+  background: none;
   border: none;
-  background-color: transparent;
-
-  font-weight: 600px;
-  font-size: 1.125rem;
-  color: var(--highlight);
-
-  margin-top: 4rem;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--pink);
 }
